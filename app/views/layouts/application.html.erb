@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Imaginativestroll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="application.css">
+</head>
+
+<body>
+<header class="header-content">
+    <div class="header-title">🚶Imaginativestroll🚶</div>
+  <u1 class="header-list">
+  <nav>
+   <div class="images-container">
+   　 <%= link_to "投稿一覧", images_path, class: "nav-link" %>
+      <%= link_to "📸記録する📸", new_image_path, class: "nav-link"  %>
+      <% if user_signed_in? %>
+      <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
+      <% end %>
+      <% if user_signed_in? %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+      <% else %>
+      <%= link_to "新規登録", new_user_registration_path, class: "nav-link"  %>
+      <%= link_to "ログイン", new_user_session_path, class: "nav-link"  %>
+    <% end %>
+   </div>
+  </nav>
+  </u1>
+</header>
+
+    <main>
+    <%= yield %>
+    </main>
+
+    <body>
+    　　<title>Imaginativestroll</title>
+    　　<meta name="viewport" content="width=device-width,initial-scale=1">
+    　　<%= csrf_meta_tags %>
+    　　<%= csp_meta_tag %>
+    　　<script src=https://kit.fontawesome.com/e40d367649.js></script>
+    　　<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    　　<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  　</body>
+</body>
+
+<footer>
+    <small>©Hinata2023</small>
+</footer>
+
+</html>

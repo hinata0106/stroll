@@ -1,0 +1,98 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+body {
+      background-color: #90D7EC;
+      font-family: 'Kiwi Maru', serif;
+  }
+
+
+.header-content{
+    text-align: center;
+    display: flex;
+    height: 60px;
+    
+    width: 100%;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+    background-color: #f2ae61;
+    
+  }
+
+  .header-title {
+    justify-content: inherit;
+    margin: 30px;
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+}
+  .images-container{
+    justify-content: flex-end;
+    font-size: large;
+  }
+
+.nav-link {
+    display       : inline-block;
+    border-radius : 5%;          /* 角丸       */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 8px 10px;   /* 余白       */
+    background    : rgba(204, 204, 204, 0.902);     /* 背景色     */
+    color         : rgba(0, 0, 0, 0.82);     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    opacity       : 0.9;         /* 透明度     */
+    transition    : .3s;         /* なめらか変化 */
+    font-family: 'Kiwi Maru', serif;
+}
+.nav-link:hover {
+    opacity       : 1;           /* カーソル時透明度 */
+  }
+
+.button {
+    display       : inline-block;
+    border-radius : 5%;          /* 角丸       */
+    font-size     : 5t;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 8px 10px;   /* 余白       */
+    background    : rgba(221, 115, 115, 0.635);     /* 背景色     */
+    color         : rgba(0, 0, 0, 0.82);     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    opacity       : 0.9;         /* 透明度     */
+    transition    : .3s;         /* なめらか変化 */
+    font-family: 'Kiwi Maru', serif;
+}
+.button:hover {
+    opacity       : 1;           /* カーソル時透明度 */
+  }
+  
+footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background-color:#207950;
+      font-size: 15px;
+      color: rgb(31, 30, 25);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }

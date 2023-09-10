@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Imaginativestroll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="application.css">
+    <link rel="stylesheet" type="text/css" href="newimage.css">
+</head>
+
+<h3>新規投稿ページ</h3>
+<div class="new">
+
+<%= form_for @images do |f| %>
+
+  <div class="field">
+  <%= f.label :image %><br/>
+  <%= f.file_field :image, class: "image" %>
+  </div>
+  <div id="image-list"></div>
+
+<div class="field">
+<%= f.label :caption %>
+<%= f.text_area :caption, :size => "30x2" %>
+</div>
+
+<div class="field">
+<%= f.label :color_画像に映っている色を書こう  %>
+<%= f.text_field :color, :size => 30 %>
+</div>
+
+<div class="field">
+<%= f.label :place %>
+<p><%= f.text_field :place, :size => 30 %></p>
+</div>
+
+<div class="form-group">
+<%= f.label :Date_taken, class: 'control-label' %>
+<p><%= f.date_select :Date_taken, class: 'form-control' %></p>
+</div>
+
+<div class='form-group'>
+   <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <div class='form-check'>
+             <%= tag.label class: 'form-check-label' do %>
+                 <%= tag.check_box class: 'form-check-input' %>
+                 <%= tag.text %>
+             <% end %>
+            </div>
+        <% end %>
+</div>
+
+  <%= f.submit "記録する", class: "button" %>
+<% end %>
+</div>
+
+
+<%= link_to "一覧に戻る", images_path, class: "button" %>
+
+</html>
+
+<script>
+if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
+    document.addEventListener('DOMContentLoaded', function(){
+      // プレビューを表示するための要素を取得
+      const ImageList = document.getElementById('image-list');
+  
+      const createImageHTML = (blob) => {
+        // 画像を表示するためのdiv要素を生成
+        const imageElement = document.createElement('div');
+        // 表示する画像を生成
+        const blobImage = document.createElement('img');
+        // img要素のsrc属性の値をセット
+        blobImage.setAttribute('src', blob);
+  
+        // 生成したHTMLの要素をブラウザに表示させる
+        imageElement.appendChild(blobImage);
+        ImageList.appendChild(imageElement);
+      };
+  
+      document.getElementById('image_image').addEventListener('change', function(e){
+        // 画像が表示されている場合のみ、すでに存在している画像を削除する（編集ページ用）
+        const imageContent = document.querySelector('img');
+        if (imageContent){
+          imageContent.remove();
+        }
+  
+        // 発火したイベントeの中の、targetの中の、filesという配列に格納された画像を変数に代入
+        const file = e.target.files[0];
+        // 画像のURLを生成
+        const blob = window.URL.createObjectURL(file);
+  
+        createImageHTML(blob);
+      });
+    });
+  }
+</script>

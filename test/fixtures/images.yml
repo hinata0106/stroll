@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image: MyString
+  category: MyString
+  color: MyString
+  place: MyString
+  date: 2023-04-13
+  uer_id: 1
+
+two:
+  image: MyString
+  category: MyString
+  color: MyString
+  place: MyString
+  date: 2023-04-13
+  uer_id: 1

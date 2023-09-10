@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Imaginativestroll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="imageshow.css">
+</head>
+
+
+<h3>詳細</h3>
+<div class="boxlistgrandparents">
+ <div class="boxlistparents">
+<div class="boxlist2">
+
+<div class="image">
+<div class="box2">
+  <h4>投稿者</h4><p><%= @image.user.name %>
+  <p><%= image_tag @image.image_url, size: "250x200" if @image.image? %>
+  <h4>caption</h4><p><%= @image.caption %>
+  <h4>color</h4><p><%= @image.color %>
+  <h4>place</h4><p><%= @image.place %>
+  <h4>category</h4><p><% @image.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+    <% end %>
+    <div class="date"><%= @image.Date_taken %></div>
+  <h4>category</h4><p><%= @image.user.email %>
+  <p><%= link_to "編集する", edit_image_path(@image.id) %>
+<%= link_to "一覧に戻る", images_path %>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</html>

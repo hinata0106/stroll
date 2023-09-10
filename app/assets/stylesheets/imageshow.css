@@ -1,0 +1,52 @@
+.boxlistgrandparents{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .boxlistparents{
+    /* width:calc(80% + 2em*8 + 0.5em*8); */
+    display: inline-block;
+  }
+  
+  .boxlist2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+  }
+  .boxlist2::before{
+    margin: 2em 0.5em ;
+    padding:2.5em 2em 2em;
+    content:"";
+    display: block;
+    width:20%;
+    order:1;
+  }
+  .boxlist2::after{
+    margin: 2em 0.5em ;
+    padding:2.5em 2em 2em;
+    content:"";
+    display: block;
+    width:20%;
+  }
+  
+   .box2{
+    margin: 2em 0.5em ;
+    background-color: #dfe69d;/*ボックス背景色*/
+    padding:2.5em 2em 2em;/*ボックス内側余白*/
+    position:relative;/*配置(ここを基準に)*/
+    height: 500px;
+    }
+  
+  
+     .box2 .date {
+    background-image: repeating-linear-gradient(-45deg,#F6EEEC 0, #F6EEEC 3px,#fafafa 3px,#fafafa 6px);/*ストライプ*/
+    border-left: 2px dotted rgba(0,0,0,.1);/* テープのギザギザ左*/
+    border-right: 2px dotted rgba(0,0,0,.1);/* テープのギザギザ右*/
+    transform: rotate(-2deg);/*テープの傾き*/
+    font-size: 1em;/*タイトル文字の大きさ*/
+    padding: 10px 20px;/*タイトルの余白*/
+    line-height: 1;/*タイトルの行の高さ*/
+    position:absolute;	/*配置(ここを動かす)*/
+    top: -15px; /*上から（-10px）移動*/
+    left: 20px; /*左から(20px)移動*/
+    }

@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Imaginativestroll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="images.scss">
+</head>
+
+<body>
+  <div class="search">
+   <aside class="colorsearch">
+     <ul>
+     <%= form_tag({controller:"images",action:"index"}, method: :get) do %>
+     <%= text_field_tag :search %>
+     <%= submit_tag '色・場所で探す', class: "button"  %>
+     <% end %>
+     </ul>
+   </aside>
+
+   <aside class="tagsearch">
+     <ul>
+     <%= form_tag({controller:"images",action:"index"}, method: :get) do %>
+     <% Tag.all.each do |t| %>
+     <%= check_box :tag_ids, t.name %><%= t.name %>
+     <% end %>
+     <%= submit_tag 'カテゴリーで検索', class: "button" %>
+     <% end %>
+     </ul>
+   </aside>
+  </div>
+ 
+ <h3>投稿一覧</h3>
+ <div class="boxlistgrandparents">
+ <div class="boxlistparents">
+  <div class="boxlist">
+  <% @images.each do |t| %>
+   <div class="box">
+      <h4>投稿者</h4><p><%= t.user.name %>
+      <div class="image">
+         <%= image_tag t.image_url, size: "280x210" if t.image? %>
+         
+      </div>
+      
+         <% if user_signed_in? %>
+         <% if current_user.already_liked?(t) %>
+         <%= link_to image_like_path(id: t.id, image_id: t.id), method: :delete do %>
+            <i class="fas fa-heart"></i><%= t.likes.count %>
+            <% end %>
+         <% else %>
+         <%= link_to image_likes_path(id: t.id, image_id: t.id), method: :post do %>
+            <i class="far fa-heart"></i><%= t.likes.count %>
+            <% end %>
+         <% end %>
+         <% else %>
+           <i class="far fa-heart"></i><%= t.likes.count %>
+         <% end %>
+      
+         <h4>caption</h4><%= t.caption %>
+         <h4>color</h4><%= t.color %>
+         <h4>place</h4><%= t.place %>
+         <h4>category</h4><% t.tags.each do |tag| %>
+            <span><%= tag.name %></span>
+            <% end %>
+         <h4>user_name</h4><%= t.user.email %>
+
+         <div class="date"><%= t.Date_taken %></div>
+
+         <p><%= link_to "詳細へ", image_path(t.id) %> 
+      
+         <% if user_signed_in? && current_user.id == t.user_id %>
+           <%= link_to "編集する", edit_image_path(t.id) %>
+         <% end %> 
+      
+   </div>
+  <% end %>
+ </div>
+ </div>
+ </div>
+<body>
+
+<%= link_to "トップに戻る", lists_path %>
+
+<html>

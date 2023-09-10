@@ -1,0 +1,9 @@
+.new {
+    margin: 2em;
+    padding:2em;/*内側余白*/
+    border-radius: 30px 60px/60px 30px;
+    border: solid 8px #ccc7be;
+    width: 300px;
+    height: 450px;
+    }
+

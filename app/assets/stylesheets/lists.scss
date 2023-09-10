@@ -1,0 +1,102 @@
+// Place all the styles related to the lists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.top{
+  max-width      : 100%;
+  max-height: 100%;
+  height     : 100vh;
+  position: relative;
+}
+
+.slide {
+  position   : relative;
+  overflow   : hidden;
+  max-width      : 100%;
+  width: auto;
+  height     : 100%;
+  margin     : auto; 
+  background : #fff;
+}
+
+.slide img {
+  display    : block;
+  position   : absolute;
+  width      : 100%;
+  height     : 100vh;
+  opacity    : 0;
+  animation  : slideAnime 30s ease infinite;
+}
+
+.slide img:nth-of-type(1) { animation-delay: 0s }
+.slide img:nth-of-type(2) { animation-delay: 6s }
+.slide img:nth-of-type(3) { animation-delay: 12s }
+.slide img:nth-of-type(4) { animation-delay: 18s }
+.slide img:nth-of-type(5) { animation-delay: 24s }
+
+@keyframes slideAnime{
+   0% { opacity: 0 }
+   2% { opacity: 1 }
+  20% { opacity: 1 }
+  22% { opacity: 0 }
+ 100% { opacity: 0 }
+}
+
+.main p{
+  position: absolute;
+  padding: 10px;
+  margin:0;
+}
+.main .tag{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  font-weight: bold;
+}
+
+.nav-links {
+  font-size: 40px;
+  color: #597358;
+  font-family: 'Kiwi Maru', serif;
+}
+
+.main .colorsearch {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Kiwi Maru', serif;
+}
+
+.tagsearch1 {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Kiwi Maru', serif;
+}
+
+input[type="text"] {
+  width: 200px;
+  height: 20px;
+}
+
+.button {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 5t;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 8px 10px;   /* 余白       */
+  background    : rgba(204, 204, 204, 0.902);     /* 背景色     */
+  color         : rgba(0, 0, 0, 0.82);     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 0.9;         /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+  font-family: 'Kiwi Maru', serif;
+}
+.button:hover {
+  opacity       : 1;           /* カーソル時透明度 */
+}
+
+

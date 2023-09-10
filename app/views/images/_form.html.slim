@@ -1,0 +1,19 @@
+= form_with model: post, local: true do |f|
+  
+.form-group
+  = f.label :image, "画像"
+  = f.file_field :image, class:"form-control", id: 'post_img'
+.image-preview
+  img[id="image_img_prev" src="#" class='hidden']
+  - if post.persisted? && post.image?
+     = image_tag post.image.url, class: 'image_present_img'
+    label
+      = f.check_box :remove_image
+
+    - else
+      = f.hidden_field :avatar_cache
+    span[id="image_isnot_sky" class="hidden"]
+
+    = f.label "タグ"
+    ul[id="post-tags"]
+    = hidden_field_tag :tag_hidden, tag_list

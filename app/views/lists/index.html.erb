@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Imaginativestroll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="list.scss">
+</head>
+
+
+<body>
+<div class= "top">
+
+ <div class= "slide" id="makeImg"> 
+ <%= image_tag 'チューリップ.jpg', :size => '69x37' %>
+ <%= image_tag 'プール.jpg', :size => '69x37'  %>
+ <%= image_tag '建物.jpg', :size => '69x37'  %>
+ <%= image_tag '気球.jpg', :size => '69x37'  %>
+ <%= image_tag '鳥.jpg', :size => '69x37'  %>
+ </div>
+
+ <div class= "main">
+    <p class="tag"><%= link_to "散歩からアイディアを得よう", images_path, class: "nav-links" %>
+    <%= form_tag({controller:"images",action:"index"}, method: :get) do %>
+    </p>
+
+    <p class="colorsearch"><%= text_field_tag :search %>
+    <%= submit_tag '色・場所で探す', class: "button" %>
+    <% end %>
+    </p>
+ </div>
+
+  <div class= "tagsearch1">
+    <p class="tagsearch"><%= form_tag({controller:"images",action:"index"}, method: :get) do %>
+    <% Tag.all.each do |t| %>
+    <%= check_box :tag_ids, t.name %><%= t.name %>
+    <% end %>
+    <%= submit_tag 'カテゴリーで検索', class: "button"  %>
+    <% end %>
+    </p>
+   </div>
+</div>
+</body>
+
+</html>

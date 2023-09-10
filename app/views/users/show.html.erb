@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Imaginativestroll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="usershow.css">
+</head>
+
+<h1>mypage</h1>
+
+<div class="mypage">
+   <p>名前 : <%= @user.name %></p>
+   <p>ユーザー名 : <%= @user.email %></p>
+   <p>プロフィール : <%= @user.profile %></p>
+   <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
+   <% if current_user.id == @user.id %>
+    <%= link_to "編集する", edit_user_registration_path %>
+   <% end %>
+</div>
+
+
+<h2>記録</h2>
+<div class="boxlist1">
+<% @user.images.each do |t| %>
+ <div class="box1">
+  <h4>投稿者</h4><p><%= t.user.name %>
+  <p><%= image_tag t.image_url, size: "280x210" if t.image? %>
+  <h4>caption</h4><%= t.caption %>
+  <h4>color</h4><p><%= t.color %>
+  <h4>place</h4><p><%= t.place %>
+  <div class="date"><%= t.Date_taken %></div>
+  <h4>user name</h4><p><%= t.user.email %>
+  <h4>category</h4><p><% t.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+  <% end %>
+ </div>
+<% end %>
+</div>
+
+<h2>お気に入り</h2>
+<div class="boxlist1">
+<% @user.liked_images.each do |t| %>
+ <div class="box1">
+  <h4>投稿者</h4><p><%= t.user.name %>
+  <p><%= image_tag t.image_url, size: "250x200" if t.image? %>
+  <h4>caption</h4><p><%= t.caption %>
+  <h4>color</h4><p><%= t.color %>
+  <h4>place</h4><p><%= t.place %>
+  <div class="date"><%= t.Date_taken %></div>
+  <h4>user name</h4><p><%= t.user.email %>
+  <h4>category</h4><p><% t.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+  <% end %>
+ </div>
+<% end %>
+</div>
+
+</html>

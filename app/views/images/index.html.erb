@@ -11,6 +11,8 @@
 </head>
 
 <body>
+
+
   <div class="search">
    <aside class="colorsearch">
      <ul>
@@ -33,6 +35,14 @@
    </aside>
   </div>
  
+<dic class="btn02">
+<a href="/images/new">新規投稿</a>
+</div>
+
+<% if user_signed_in? %>
+<a href="/users/<%= current_user.id %>">マイページへ</a>
+<% end %>
+
  <h3>投稿一覧</h3>
  <div class="boxlistgrandparents">
  <div class="boxlistparents">

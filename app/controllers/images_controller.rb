@@ -32,7 +32,7 @@ class ImagesController < ApplicationController
           if params[:tag]
           Tag.create(name: params[:tag])
           end
-        end
+    end
 
     
 

@@ -36,4 +36,24 @@
 </div>
 </div>
 </div>
+
+<input id="copyTarget" type="text" value="http://localhost:3000/images/1" readonly>
+<button onclick="copyToClipboard()">Copy text</button>
+        
+<script>
+        function copyToClipboard() {
+            // コピー対象をJavaScript上で変数として定義する
+            var copyTarget = document.getElementById("copyTarget");
+
+            // コピー対象のテキストを選択する
+            copyTarget.select();
+
+            // 選択しているテキストをクリップボードにコピーする
+            document.execCommand("Copy");
+
+            // コピーをお知らせする
+            alert("コピーできました！ : " + copyTarget.value);
+         }
+</script>
+
 </html>
